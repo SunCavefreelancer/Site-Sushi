@@ -1,0 +1,1543 @@
+/*Обнуление*/
+*,*:before,:after {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    text-decoration: none;
+    letter-spacing: none;
+    list-style: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+/* ------------------------------------------------------------------- */
+html,
+body {
+    height: 100%;       /* прижимаем футер КНИЗУ */
+
+    line-height: 1;
+    font-size: 16px;
+    color: #000;
+}
+/* ------------------------------------------------------------------- */
+
+/* -------------------------оболочка для демонстрации----------------- */
+.wrapper {
+    min-height: 100%;         /* прижимаем футер КНИЗУ */
+    display: flex;         /* прижимаем футер КНИЗУ */
+    flex-direction: column; /* прижимаем футер КНИЗУ */
+    overflow: hidden;
+}
+
+/* -------------------------ТЕНИЧЕСКИЕ КЛАССЫ----------------- */
+._conteiner { /* общий ограничиваюий контейнер */
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0px 20px;
+}
+._ibg { /* для всех используемых ibg */
+    position: relative;
+}
+._ibg img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}/* -------------------------ТЕНИЧЕСКИЕ КЛАССЫ----------------- */
+
+/* -------------------------основные стили------------------------ */
+
+.header {
+    position: fixed; /* Наша ШАПКА - HEADER будет ФИКСИРОВАННОЙ, т.е.при скроле она всеглда будет сверху кнотента */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 50;/* делаем большой z-index ЧТОБЫ поверх контента была шапка*/
+}
+
+/* --------------------создаем ПЛАШКУ РОЗОВОГО ЦВЕТА----------------------*/
+.header:before {/* создаем ПЛАШКУ */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* т.е. на ВЕСЬ РАЗМЕР НАШЕЙ ШАПОЧКИ */
+    background-color: rgb(238, 33, 33);
+    z-index: 2;
+}
+._conteiner { /* теперь ОГРАНИЧИМ по ШИРИНЕ КОНТЕНТ */
+    max-width: 1140px; /* получилось */
+    margin: 0 auto; /* получилось */
+    padding: 0px 20px; /* получилось */
+}
+.header__body { /* теперь нам нужно ВЫТАЩИТЬ ВЕСЬ КОНТЕНТ НАВЕРХ из под ШАПКИ */
+    position: relative;
+    z-index: 2;
+    height: 80px; /* ВЫСОТА ШАПКИ header */
+
+    /* теперь продолжаем работать с ШАПКОЙ, после того как в conteiner - ОГРАНИЧИЛИ по ШИРИНЕ КОНТЕНТ */
+    display: flex; /* ЗаДАЛИ flex что бы РАЗБРОСАТЬ по СТОРОНАМ лого и пункты меню */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_logo {
+    font-size: 30px;
+    font-family: 'Great Vibes', cursive;
+    font-weight: 900;
+    text-shadow: 1px 0px 0px rgb(42, 41, 42);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header_logo:hover {
+    cursor: pointer;
+    transition: 0.8s;
+}
+.span-FIT { /*  задаем ЦВЕТ ИМЕННО  span */
+    color: #100f10;
+}
+.header_logo a { /* задаем ЦВЕТ ИМЕННО ЛОГО */
+    color: #9c9a9c;
+    font-weight: 900;
+}
+/* ----img---- */
+.header_logo-img { /* а размер ДЛЯ НАШЕЙ КАРТИНКИ мы укажем 60рх */
+    flex: 0 0 60px; /* КАРТИНКА сама по размеру 200рх */
+    /*border-radius:60%; /* делаем картинку КРУГЛОЙ */
+    overflow: hidden;
+    /* если у КАРТИНКИ есть ПОДРЕЗАНИЕ - пишем в header__logo img - DISPLAY: BLOCK */
+    margin: 0px 0px 0px 20px;/* сдвинули картинку -лого вправо */
+}
+.header_logo-img img { /* если вдруг ДРУГАЯ КАРТИНКА будет БОЛЬШЕ, то чтобы потом подстроилась под НАШ РАЗМЕР */
+    max-width: 100%;
+    /*display: block;*/
+}
+
+/* --------------------------------------------------ПЕРЕХОДИМ К верстке самих ПУНКТОВ МЕНЮ---------------------------------- */
+.header__list {
+    display: flex;
+    position: relative;
+    z-index: 2;
+}
+
+.menu_header_link { /* все ссылки отступы */
+    /*padding: 0px 0px 0px 10px;*/
+    list-style: none; /* убираем ТОЧКИ перед ПУНКАМИ МЕНЮ */ /* получилось */
+    margin: 0px 0px 0px 20px; /* получилось */
+    text-transform: uppercase;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px; /* если сделать шрифт меньше, СКРОЛА не будет */
+
+    /* ---------------------------------------------------ДЕЛАЕМ интересное подчеркивание пунктов меню-------------------------------------- */
+    background: linear-gradient(rgb(253, 251, 247) 0 0) bottom/var(--t,0) 2px no-repeat;
+    transition: 0.5s; /* плавный переход-анимация */
+}
+    /* что бы заработало добавляем HOVER --t: */
+    .menu_header_link:hover {
+    --t: 100%;
+}
+
+.menu_header_link1 {  /* задаем всем ссылкам размер, шрифт, цвет */
+    font-size: 18px;
+    color: #faf6f6;
+}
+.menu_header_link1:hover {
+    color: #98989a;
+    transition: 0.7s;
+} 
+.link_vip { /* -------------------выделяем отдельно ссылку в меню -----------------  */
+    color: #212121;
+}
+.link_vip:hover {
+    color: #eaedf6;
+    cursor: pointer;
+    transition: 0.7s;
+}
+
+
+ /* --------------------------------------------------переходим к верстке БУРГЕР-МЕНЮ--------------------------------- */
+.header__burger {
+    display: none;
+}
+.header__menu {
+}
+
+
+
+/* --------------------------------------------------ПЕРЕХОДИМ К верстке Медиа-Запрос для 767px-экранов---------------------------------- */
+
+/* будет выскакивать БУРГЕР-МЕНЮ при уменьшеении ЭКРАНОВ  */
+
+@media (max-width:767px) {
+    .header__body { /* уменьшаем ВЫСОТУ ШАПКИ header  */
+        height: 50px;
+    }
+    .header__logo { /* уменьшаем размер ЛОГО-фото */
+        flex: 0 0 40px;
+    }
+    /* это будет бургер меню */
+    .header__burger {
+        display: block;
+        position: relative;
+        width: 30px;
+        height: 20px;
+        position: relative;
+        z-index: 3;
+    } 
+
+    /* --------------------------здесь мы РИСУЕМ ПОЛОСОЧКИ БУРГЕР */ /* общие настройки-------------------------- */
+    .header__burger:before,
+    .header__burger:after {
+        content: "";
+        background-color: #fff;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        left: 0;
+        transition: all 0.3s ease 0s; /* теперь переходят плавно полосочки */
+    }
+
+    /* --------------------------здесь мы РИСУЕМ Верхнюю ПОЛОСУ БУРГЕР-------------------------- */
+    .header__burger:before {
+        top: 0;  
+    }
+     /* --------------------------здесь мы РИСУЕМ Нижнюю ПОЛОСУ БУРГЕР-------------------------- */
+    .header__burger:after {
+        bottom: 0;  
+    }
+     /* --------------------------здесь мы РИСУЕМ СРЕДНЮЮ ПОЛОСУ БУРГЕР--------------------------- */
+    .header__burger span {
+        position: absolute;
+        background-color: #fff;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        top: 9px;
+        transition: all 0.3s ease 0s; /* теперь переходят плавно полосочки */
+    }
+
+    .header__burger.active:before {
+        transform: rotate(45deg); /* делаем палочку теперь на 45`,т.е.она стала по диагонале */
+        top: 9px; /* теперь подняли ее на центр */
+    }
+    .header__burger.active:after {
+        transform: rotate(-45deg); /* делаем палочку теперь на 45`,т.е.она стала по диагонале */
+        bottom: 9px; /* теперь подняли ее на центр */
+    }
+    .header__burger.active span {
+        transform: scale(0); /* убираем среднюю полосочку */
+    }
+    /* --------------------------здесь мы Закончили РИСОВАТЬ - БУРГЕ-------------------------- */
+
+
+
+    /* -----------------теперь стилизуем МЕНЮ----------------- */
+    .header__menu {
+        /* Делаем ПЛАСТИНУ которая будет ВЫЕЗЖАТЬ для пунктов меню */
+        position: fixed;
+        top: -100%; /* меню будет сьезжать сверху */
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto; /* будет скрол при повороте экрана телефона */
+        transition: all 0.3s ease 0s; /* теперь переходит плавно */    
+        background-color: #8043f0; 
+        padding: 70px 10px 20px 10px; /* пункты меню вытащили из розовой плашки в РЯД */
+    }
+    .header__menu.active {
+        top: 0;
+    }
+
+    .header__list {
+        display: block; /* меню пункты встали в КОЛОНКУ */
+        text-align: center;
+    }
+    .header__list li { /* теперь сделали отступы между строчками меню в колонке */
+        margin: 0px 0px 20px 0px;
+    }
+
+    .header__list li {
+    font-size: 27px; /* сделали шрифт больше (с 20рх на 27рх), для СКРОЛА телефонов в горизонтальном положении!*/
+    }
+/* -----------------теперь стилизуем МЕНЮ----------------- */
+
+}
+.main {
+    flex: 1 1 auto; /* прижимаем ФУТЕР к низу */
+}
+
+
+
+/* ======================================section_UP============================================ */
+.section_UP {
+    background-color: #0d0c0c;
+}
+.BLOCK-UP {
+    padding: 50px 0px 0px 0px;
+}
+@media (max-width:767px) {
+    .BLOCK-UP{
+        padding: 45px 0px 50px 0px;
+    }   
+}
+@media (max-width:530px) {
+    .BLOCK-UP{
+        padding: 15px 0px 50px 0px;
+    }  
+}
+.section_UP-FOTO {
+    margin-top: -80px;
+        position: relative; /* фото на весь блок */
+        padding: 0px 0px 40% 0px;
+}
+.section_UP-FOTO img/* фото на весь блок */ {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+/* --------ibg------ */
+.ibg {
+    position: relative;
+}
+.ibg img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: contain;
+}
+/* --------ibg------ */
+
+
+.section_UP_conteiner {
+}
+.section_UP-TEXT-TOP {
+
+}
+.section_UP-TEXT {
+    position: relative;
+    z-index: 3;
+}
+.section_UP-TEXT >*:not(:last-child) {
+    padding: 80px 0px 0px 0px;
+}
+
+.header_logo3 {
+    font-size: 20px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 900;
+    text-shadow: 2px 0px 0px rgb(42, 41, 42);
+
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+@media (max-width:900px) {
+    .header_logo3 {
+        flex: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }   
+}
+.header_logo3 img {
+    filter: contrast(50%);
+}
+.header_logo3:hover img{
+    cursor: pointer;
+    rotate: -360deg;
+    filter: contrast(50%);
+    transition: 0.8s;
+}
+
+.span-FITt {
+    color: #f80f0f;
+}
+.span-FITt:hover {
+    color: #f0eeee;
+    cursor: pointer;
+    text-shadow: 2px 0 0 red;
+    transition: 0.8s;
+}
+.header_logo3 a { /* задаем ЦВЕТ ИМЕННО ЛОГО */
+    color: #9c9a9c;
+    font-weight: 900;
+}
+
+/* ----img---- */
+.header_logo-imgt { /* а размер ДЛЯ НАШЕЙ КАРТИНКИ мы укажем 60рх */
+    flex: 0 0 40px; /* КАРТИНКА сама по размеру 200рх */
+    overflow: hidden;
+    /* если у КАРТИНКИ есть ПОДРЕЗАНИЕ - пишем в header__logo img - DISPLAY: BLOCK */
+    margin: 0px 0px 0px 30px;/* сдвинули картинку -лого вправо */
+}
+.header_logo-imgt img { /* если вдруг ДРУГАЯ КАРТИНКА будет БОЛЬШЕ, то чтобы потом подстроилась под НАШ РАЗМЕР */
+    max-width: 100%;
+    /*display: block;*/
+}
+
+.section_UP-TEXT-TOP {
+    display: flex;
+    justify-content: space-between;
+}
+@media (max-width:900px) {
+    .section_UP-TEXT-TOP {
+        flex-wrap: wrap;
+    }   
+}
+@media (max-width:900px) {
+    .section_UP-TEXT-TOP >*:not(:last-child) {
+        padding: 0px 0px 30px 0px;
+    }   
+}
+.section_UP-TITLE {
+    text-align: right;
+    font-size: 20px;
+    color: #fff7f7;
+    text-shadow: 4px 0 0 #100f10;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media (max-width:900px) {
+    .section_UP-TITLE {
+        flex: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        
+       /* border:  1px solid #f0eeee;*/
+    }   
+}
+@media (max-width:600px) {
+    .section_UP-TITLE {
+         line-height: 160%;
+        
+        /*border:  1px solid #f0eeee;*/
+    }   
+}
+.section_UP-SUBTITLE /* найсмачниши */ {
+    margin: 30px 0 20px 0;
+    text-align: center;
+    font-weight: 800;
+    font-size: 55px;
+    line-height: 170%;
+    color: #fff7f7;
+    font-family: 'Great Vibes', cursive;
+
+    text-shadow: 2px 0 0 #25201f;
+}
+@media (max-width:1200px) {
+    .section_UP-SUBTITLE {
+        margin: 30px 0 35px 0;
+    }    
+}
+@media (max-width:992px) {
+    .section_UP-SUBTITLE {
+        font-size: 40px;
+    }    
+}
+@media (max-width:767px) {
+    .section_UP-SUBTITLE {
+        font-size: 30px;
+        line-height: 200%;
+        margin: 20px 0 15px 0;
+    }    
+}
+@media (max-width:530px) {
+    .section_UP-SUBTITLE {
+        font-size: 30px;
+        line-height: 170%;
+        margin: 30px 0 25px 0;
+    }    
+}
+@media (max-width:500px) {
+    .section_UP-SUBTITLE {
+        font-size: 27px;
+        line-height: 160%;
+        font-size: 20px;
+    }    
+}
+/* ======================================section_UP============================================ */
+
+
+
+
+/* ======================================section_SETU============================================ */
+
+.section_SETU {
+
+}
+
+.BLOCK-section_SETU {
+    padding: 50px 0px 50px 0px;
+}
+
+.section_SETU_conteiner {
+}
+._conteiner {
+}
+
+
+.Block_CONTENT {
+}
+
+.BOX-nav {
+
+}
+
+.nav-BOX {
+
+}
+
+.list-BOX {    
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+
+    /*border: 1px solid #e62828;*/
+}
+.list-BOX >*:not(:last-child) {
+    padding: 0px 20px 12px 0px;
+}
+@media (max-width:767px) {
+    .list-BOX {
+
+    }
+}
+.link-BOX  {
+    color: #2c2a2a;
+    font-weight: 800;
+    font-size: 20px;
+}
+.link-BOX a{
+    color: inherit;
+}
+.link-BOX:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #f91818;
+    transition: 0.7s;
+
+}
+.BOX-Info-CARD >*:not(:last-child) {
+    padding: 40px 0px 40px 0px;}
+
+.BOX-Info-CARD_TITLE {
+    text-align: center;
+    color: #555252;
+    font-weight: 800;
+}
+
+
+.BOX-Info-COLUNMS {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+
+  /*  border: 1px solid  #0ff813;*/
+}
+
+.BOX-Info-COLUNM {
+    flex: 0 1 33.333%;
+    padding: 0 15px;
+
+   /* border: 1px solid  #f80f0f;*/
+}
+@media (max-width:992px) {
+    .BOX-Info-COLUNM {
+        flex: 0 1 100%;
+        padding: 0px 0px 40px 0px;
+    }
+}
+.Y-podarunok /* span */ {
+    font-weight: 900;
+    color: #f50b0b;
+    text-shadow: 1px 0 0 #0d0c0c;
+    font-family:  'Trebuchet MS', sans-serif;
+}
+
+
+/* ---------------картинка------------- */
+.BOX-Info_IMG {
+    position: relative;
+    padding: 0px 0px 60% 0px;
+}
+.BOX-Info_IMG img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+   /* border: 1px solid  #0f22f8;*/
+}
+._ibg2 {
+    position: relative;
+}
+._ibg2 img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+/* ---------------картинка------------- */
+
+.BOX-Info_Filadelfia {
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+.BOX-Info_Filadelfia:hover {
+    color: #e62828;
+    cursor: pointer;
+    transition: 0.7s;
+}
+.BOX-Info_TITLE {
+    font-size: 20px;
+    line-height: 150%;
+}
+.BOX-Info_TITLE >*:not(:last-child) {
+    padding: 0px 0px 20px 0px;
+
+}
+
+.BOX-Info_TEXT {
+
+}
+
+.BOX-Info_down {    
+    display: flex;
+}
+.BOX-Info_down >*:not(:last-child) {
+    padding: 0px 40px 0px 0px;
+
+   /* border: 1px solid  #0f22f8;*/
+}
+
+.BOX-Info_SUBTEXT {    
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.BOX-Info_I {
+
+
+}
+.BOX-Info_I img {
+    background-color: #fb1919;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.BOX-Info_I :hover {
+    opacity: 0.7;
+    cursor: pointer;
+    background-color: #86ff5a;
+    transition: 0.8s;
+}
+.BOX-Info_Propoz {
+    background-color: #fb1919;
+    border-radius: 40px;
+    padding: 0px 25px;
+    font-weight: 700;
+}
+.BOX-Info_Propoz:hover {
+    opacity: 0.7;
+    cursor: pointer;
+    background-color: #86ff5a;
+    transition: 0.8s;
+}
+@media (max-width:360px) {
+    .BOX-Info_Propoz {
+        padding: 0px 12px;
+    }
+}
+
+
+/* ================================================section_MENU=========================================================== */
+
+
+.section_MENU {
+    padding: 50px 0px 50px 0px;
+    background-color: #0e0e0e;
+}
+
+.BLOCK-section_MENU {
+}
+
+.section_MENU_conteiner {
+
+}
+._conteiner {
+}
+.BOX-section_MENU >*:not(:last-child) {
+    padding: 0px 0px 30px 0px;
+}
+.BLOCK-COLUM-section_MENU >*:not(:last-child) {
+    padding: 0px 0px 30px 0px;
+}
+
+.section_MENU-TITLE-center {
+    display: flex;
+    justify-content: center;
+
+    font-size: 25px;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #fdf5f5;
+    font-weight: 800;
+}
+@media (max-width:365px) {
+    .section_MENU-TITLE-center {
+        font-size: 22px;
+    }
+}
+.BLOCK-COLUMS-section_MENU {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 50px 0px 0px 0px;
+
+    /*border: 1px solid  #4943f0;*/
+}
+
+.BLOCK-COLUM-section_MENU {
+    flex: 0 1 50%;
+
+   /* border: 1px solid  #63f043;*/
+}
+@media (max-width:992px) {
+    .BLOCK-COLUM-section_MENU {
+        flex: 0 1 100%;
+
+    }
+}
+
+.BLOCK-COLUM-section_MENU-row {
+}
+
+.IMG-section_MENU-povar {
+    position: relative;
+    padding: 0px 0px 126% 0px;
+
+   /* border: 1px solid  #f07d43;*/
+}
+.IMG-section_MENU-povar img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+    margin-top: 80px;
+}
+@media (max-width:992px) {
+    .IMG-section_MENU-povar img {
+        margin-top: -30px;
+    }
+}
+@media (max-width:767px) {
+    .IMG-section_MENU-povar img {
+        margin-top: -30px;
+    }
+}
+@media (max-width:370px) {
+    .IMG-section_MENU-povar img {
+        margin-top: -30px;
+    }
+}
+._ibg3 {
+    position: relative;
+}
+._ibg3 img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}/* картинка повар */
+
+
+
+/* картинка суши */
+
+.IMG-section_MENU {
+    position: relative;
+    padding: 0px 0px 40% 0px;
+
+    /*border: 1px solid  #8043f0;*/
+}
+.IMG-section_MENU:hover {
+    opacity: 0.7;
+    cursor: pointer;
+    transition: 0.8s;
+}
+.IMG-section_MENU img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+._ibg2 {
+    position: relative;
+}
+._ibg2 img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}/* картинка суши */
+
+.BLOCK-COLUM-section_MENU-TEXT {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 25px;
+    line-height: 154%;
+    letter-spacing: 0.5px;
+    color: hwb(0 95% 3%);
+    font-weight: 800;
+}
+@media (max-width:515px) {
+    .BLOCK-COLUM-section_MENU-TEXT {
+        font-size: 18px;
+        letter-spacing: 0.2px;
+    }
+}
+@media (max-width:370px) {
+    .BLOCK-COLUM-section_MENU-TEXT {
+        font-size: 15px;
+
+    }
+}
+
+
+/* ========================================section_MENU================================================ */
+
+/* =====================================section_ROLi_na-belom============================== */
+.section_ROLi_na-belom {
+    padding: 50px 0px 50px 0px;
+}
+.ROLi_na-belom {
+}
+
+.section_ROLi_na-belom_conteiner {
+}
+._conteiner {
+}
+
+
+.section_ROLi_na-belom_text-center {
+    display: flex;
+    justify-content: center;
+
+    font-size: 30px;
+    text-align: center;
+    font-weight: 900;
+    letter-spacing: 1px;
+    font-family: 'Great Vibes', cursive;
+}
+
+.section_ROLU_na-belom_ROW {
+    padding: 50px 0px 0px 0px;
+}
+
+.section_ROLU_na-belom_COLUMS {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+
+    /*border: 1px solid  #8043f0;*/
+}
+
+.section_ROLU_na-belom_COLUMN {
+    flex: 0 1 33.333%;
+    padding: 0 15px;
+    /*border: 1px solid  #43f057;*/
+
+}
+.section_ROLU_na-belom_COLUMN:hover {  /* -------hover на всю колонку------ */
+    background-color: #f6f6f6;
+    transition: 0.8s;
+    cursor: pointer;
+    box-shadow: 1px 0 10px #faf6f6; /* -------hover на всю колонку------ */
+}
+@media (max-width:1100px) {
+    .section_ROLU_na-belom_COLUMN {
+        flex: 0 1 50%;
+        padding: 20px 20px;
+    }
+}
+@media (max-width:767px) {
+    .section_ROLU_na-belom_COLUMN {
+        flex: 0 1 100%;
+        padding: 20px 20px;
+    }
+}
+/* картинка в карточке */
+.section_ROLU_na-belom_FOTO {
+    position: relative;
+    padding: 0px  0px 45% 0px ;
+}
+.section_ROLU_na-belom_FOTO:hover {
+    opacity: 0.7;
+    cursor: pointer;
+    transition: 0.8s;
+}
+.section_ROLU_na-belom_FOTO img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+    /*border: 1px solid  #7fdc8a;*/
+}
+._ibg4 {
+    position: relative;
+}
+._ibg4  img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+/* картинка в карточке */
+
+.section_ROLU_na-belom_TEXT-box {
+    padding:  20px 0px 0px 0px;
+
+    /*display: flex;
+    flex-direction: column;
+    min-height: 100%;*/
+}
+.section_ROLU_na-belom_TEXT-box >*:not(:last-child) {
+    padding: 0px 0px 15px 0px;
+}
+
+.Text-box_TITLE {
+    font-size: 20px;
+    text-align: left;
+    font-weight: 600;
+}
+
+@media (max-width:360px) {
+    .Text-box_TITLE {
+        font-size: 16px;
+    }
+}
+.Text-box_PRICE {
+    font-size: 20px;
+    text-align: left;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.Text-box_24-910 {
+    font-size: 20px;
+    text-align: left;
+    font-weight: 600;
+    color: #8c8b8b;
+}
+
+.TEXT_SUBTITLE-BOX {
+}
+
+.Text-box_SUBTITLE {
+    line-height: 130%;
+    font-size: 16px;
+    text-align: left;
+    color: #121212;
+    font-weight: 600;
+    margin-bottom: 10px;
+
+   /* flex: 1 1 auto;*/
+
+}
+
+.Text-box_V-KOSHIK {
+    background-color: #ff3434;
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+    padding: 5px 30px;
+
+    display: inline-block;  
+    border-radius: 30px;
+}
+.Text-box_V-KOSHIK a {
+    color: inherit;
+
+}
+.Text-box_V-KOSHIK:hover {
+    background-color: #e0e0e0;
+    cursor: pointer;
+    color: #f80f0f;
+    border: 1px solid #212121;
+    transition: 0.8s;
+}
+/*===============================section_ROLU_na-belom=============================================== */
+
+
+/* ===============================ection_SALATI================================================ */
+
+
+
+
+
+/* ===============================ection_SALATI================================================ */
+
+.section_SALATI {
+    background-color: #0e0e0e;
+    padding: 50px 0px 50px 0px;
+}
+.BLOCK-ection_SALATI {
+}
+
+.ection_SALATI_conteiner {
+}
+._conteiner {
+}
+
+
+.section_SALATI_text-center {
+    display: flex;
+    justify-content: center;
+
+    font-size: 30px;
+    text-align: center;
+    color: #faf2f2;
+    font-weight: 900;
+    letter-spacing: 1px;
+    font-family: 'Great Vibes', cursive;
+}
+
+.section_SALATI-ROW {
+    padding: 50px 0px 0px 0px;
+}
+
+.section_SALATI-COLUMNS {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+
+    /*border: 1px solid #8043f0;*/
+}
+.section_SALATI-COLUMN {
+    flex: 0 1 33.333%;
+    padding: 0 15px;
+
+    /*border: 1px solid #f1e729;*/
+}
+.section_SALATI-COLUMN:hover {  /* -------hover на всю колонку------ */
+    background-color: #3836364b;
+    transition: 1s;
+    cursor: pointer;
+    box-shadow: 1px 0 10px #2d2d2d; /* -------hover на всю колонку------ */
+}
+@media (max-width:1100px) {
+    .section_SALATI-COLUMN {
+        flex: 0 1 50%;
+        padding: 20px 20px;
+    }
+}
+@media (max-width:767px) {
+    .section_SALATI-COLUMN {
+        flex: 0 1 100%;
+        padding: 20px 20px;
+    }
+}
+/* картинка в карточке */
+.section_SALATI-FOTO {
+    position: relative;
+    padding: 0px 0px 60% 0px;
+}
+.section_SALATI-FOTO:hover {
+    opacity: 0.7;
+    cursor: pointer;
+    transition: 0.8s;
+}
+
+.section_SALATI-FOTO img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+    /*border: 1px solid #e14705;*/
+}
+._ibg5 {
+    position: relative;
+}
+._ibg5  img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+/* картинка в карточке */
+
+
+.section_SALATI-TEXT {
+    padding: 20px 0px 0px 0px;
+
+}
+.section_SALATI-TEXT  >*:not(:last-child) {
+    padding: 0px 0px 15px 0px;
+}
+
+.section_SALATI-TITLE {
+    font-size: 20px;
+    text-align: left;
+    font-weight: 600;
+    color: #f4eaea;
+}
+
+.section_SALATI-PRICE {
+    font-size: 20px;
+    text-align: left;
+    font-weight: 600;
+    text-decoration: underline;
+    color: #f4eaea;
+}
+.section_SALATI_1-290g {
+    font-size: 20px;
+    text-align: left;
+    font-weight: 600;
+    color: #8c8b8b;
+}
+
+.section_SALATI-SUBTITLE {
+    line-height: 130%;
+    font-size: 16px;
+    text-align: left;
+    font-weight: 600;
+    color: #f4eaea;
+    margin-bottom: 10px;
+}
+
+.Text-box_V-KOSHIK {
+}
+
+
+/* ==========================section_SUSHi_na-belom================================================ */
+
+
+
+
+
+/* ==========================section_SUSHi_na-belom================================================ */
+
+.section_SUSHi_na-belom {
+    padding: 50px 0px 50px 0px;
+}
+._SUSHi_na-belom {
+}
+.section_SUSHi_na-belom_conteiner {
+}
+._conteiner {
+}
+
+
+.section_SUSHi_na-belom_text-center {
+    display: flex;
+    justify-content: center;
+
+    font-size: 30px;
+    text-align: center;
+    color: #1f1e1e;
+    font-weight: 900;
+    letter-spacing: 1px;
+    font-family: 'Great Vibes', cursive;
+}
+.section_SUSHi_na-belom_ROW {
+    padding: 50px 0px 0px 0px;
+}
+.section_SUSHi_na-belom_COLUMS {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+.section_SUSHi_na-belom_COLUMN {
+    flex: 0 1 33.333%;
+    padding: 0 15px;
+
+    /*border: 1px solid  #555252;*/
+}
+.section_SUSHi_na-belom_COLUMN:hover {  /* -------hover на всю колонку------ */
+    background-color: #f6f6f6;
+    transition: 0.8s;
+    cursor: pointer;
+    box-shadow: 1px 0 10px #faf6f6; /* -------hover на всю колонку------ */
+}
+@media (max-width:1100px) {
+    .section_SUSHi_na-belom_COLUMN {
+        flex: 0 1 50%;
+        padding: 20px 20px;
+    }
+}
+@media (max-width:767px) {
+    .section_SUSHi_na-belom_COLUMN {
+        flex: 0 1 100%;
+        padding: 20px 20px;
+    }
+}
+/* картинка в колонке */
+.section_SUSHi_na-belom_FOTO {
+    position: relative;
+    padding: 0px 0px 55% 0px;
+}
+.section_SUSHi_na-belom_FOTO:hover {
+    opacity: 0.7;
+    cursor: pointer;
+    transition: 0.8s;
+}
+.section_SUSHi_na-belom_FOTO img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+._ibg5 {
+    position: relative;
+}
+._ibg5 img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+/* картинка в колонке */
+
+
+.section_ROLU_na-belom_TEXT-box {
+}
+.Text-box_TITLE {
+}
+.Text-box_PRICE {
+}
+.Text-box_24-910 {
+}
+.TEXT_SUBTITLE-BOX {
+}
+.Text-box_SUBTITLE {
+}
+.Text-box_V-KOSHIK {
+}
+
+/* ==================================================================================== */
+
+
+/* =========================================section_DOWN-PAGE============================================== */
+
+.section_DOWN-PAGE {
+    padding: 100px 0px 50px 0px;
+}
+.BLOCK-section_DOWN-PAGE {
+    position: relative;
+}
+
+.section_DOWN-PAGE-Img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.section_DOWN-PAGE-Img {
+    filter:contrast(12%);
+}
+
+.section_DOWN-PAGE_conteiner {
+}
+._conteiner {
+}
+
+
+.section_DOWN-PAGE_TITLE {
+    position: relative;
+    z-index: 2;
+}
+.section_DOWN-PAGE_TITLE >*:not(:last-child) {
+    padding: 0px 0px 25px 0px;}
+
+.section_DOWN-PAGE_DOPOVNENYA {
+    display: flex;
+    justify-content: center;
+
+        font-size: 25px;
+        font-weight: 600;
+        text-align: center;
+        color: #fdf7f7;
+        text-shadow: 3px 0 0 #000;
+        letter-spacing: 1px;
+        font-family: 'Great Vibes', cursive;
+    }
+
+.section_DOWN-PAGE_text-UP {
+    font-size: 20px;
+    text-align: center;
+    line-height: 154%;
+    letter-spacing: 1px;
+    color: #fdf7f7;
+    text-shadow: 3px 0 0 #000;
+}
+
+.section_DOWN-PAGE_TITLE-KAK-MI {
+    font-size: 25px;
+    font-weight: 600;
+    color: #fdf7f7;
+    text-shadow: 2px 0 0 #000;
+}
+
+.section_DOWN-PAGE_TITLE-KAK {
+    font-size: 18px;
+    line-height: 154%;
+    letter-spacing: 1px;
+    color: #fdf7f7;
+    text-shadow: 2px 0 0 #000;
+}
+
+.section_DOWN-PAGE_nav {
+}
+
+.section_DOWN-PAGE_list {
+}
+
+.section_DOWN-PAGE_link {
+    text-shadow: 2px 0 0 #000;
+    font-size: 17px;
+    line-height: 154%;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: #fdf7f7;
+}
+.section_DOWN-PAGE_link::before {
+    content: url(img_png/tick.png);
+    background-position: left;
+    background-repeat: no-repeat;
+    margin-right: 15px;
+}
+.section_DOWN-PAGE_SUBTITLE-KAK {
+    font-size: 18px;
+    line-height: 154%;
+    letter-spacing: 1px;
+    border: 1px solid #fdf7f7;;
+    padding: 10px;
+    color: #fdf7f7;
+    text-shadow: 2px 0 0 #000;
+}
+
+
+/* =========================================section_DOWN-PAGE============================================== */
+
+
+
+
+
+
+
+
+/* ==================================footer====================================== */
+.footer {
+    background-color: #f91d1d;
+    width: 100%;
+    padding: 20px 0px 30px 0px;
+}
+.footer_conteiner {
+}
+._conteiner {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.Foter_COLUMS {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+
+    /*border:1px solid  #faf6f6;*/
+}
+.Footer_COLUMN1 {
+    flex: 0 1 33.333%;
+    padding: 0 15px;
+   /* border:1px solid  #faf6f6;*/
+}
+@media (max-width:992px) {
+    .Footer_COLUMN1 {
+        flex: 0 1 50%;
+        padding: 0px 0px 20px 0px;
+    }
+}
+@media (max-width:767px) {
+    .Footer_COLUMN1 {
+        flex: 0 1 100%;
+    }
+}
+.Footer_TITLE {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 160%;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.header_logo2 {
+    font-size: 20px;
+    font-family: 'Great Vibes', cursive;
+    font-weight: 900;
+    text-shadow: 1px 0px 0px rgb(42, 41, 42);
+
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.header_logo2:hover img{
+    cursor: pointer;
+    rotate: -360deg;
+    filter: contrast(50%);
+    transition: 0.8s;
+}
+.span-FIT { /*  задаем ЦВЕТ ИМЕННО  span */
+    color: #100f10;
+}
+.header_logo2 a { /* задаем ЦВЕТ ИМЕННО ЛОГО */
+    color: #9c9a9c;
+    font-weight: 900;
+}
+/* ----img---- */
+.header_logo-img { /* а размер ДЛЯ НАШЕЙ КАРТИНКИ мы укажем 60рх */
+    flex: 0 0 40px; /* КАРТИНКА сама по размеру 200рх */
+    overflow: hidden;
+    /* если у КАРТИНКИ есть ПОДРЕЗАНИЕ - пишем в header__logo img - DISPLAY: BLOCK */
+    margin: 0px 0px 0px 30px;/* сдвинули картинку -лого вправо */
+}
+.header_logo-img img { /* если вдруг ДРУГАЯ КАРТИНКА будет БОЛЬШЕ, то чтобы потом подстроилась под НАШ РАЗМЕР */
+    max-width: 100%;
+    /*display: block;*/
+}
+
+
+.Footer_COLUMN2 {
+    flex: 0 1 25.5%;
+    padding: 0 15px;
+   /* border:1px solid  #faf6f6;*/
+}
+@media (max-width:992px) {
+    .Footer_COLUMN2 {
+        flex: 0 1 50%;
+        padding: 0px 0px 20px 0px;
+    }
+}
+@media (max-width:767px) {
+    .Footer_COLUMN2 {
+        flex: 0 1 100%;
+    }
+}
+.Footer_ICONS {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+}
+.header_logo-imgF {
+    flex: 0 0 30px; /* КАРТИНКА сама по размеру 200рх */
+    overflow: hidden;
+    margin: 0px 10px 0px 0px;/* сдвинули картинку -лого вправо */
+}
+.header_logo-imgF {
+    max-width: 100%;
+}
+.header_logo-imgF:hover {
+    cursor: pointer;
+    filter: contrast(50%);
+    rotate: -360deg;
+    transition: 0.8s;
+}
+
+.Footer_TEXT {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 160%;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.Footer_COLUMN3 {
+    flex: 0 1 20%;
+    padding: 0 15px;
+   /* border:1px solid  #faf6f6;*/
+}
+@media (max-width:992px) {
+    .Footer_COLUMN3 {
+        flex: 0 1 50%;
+        padding: 0px 0px 20px 0px;
+    }
+}
+@media (max-width:767px) {
+    .Footer_COLUMN3 {
+        flex: 0 1 100%;
+    }
+}
+.Footer_adress {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.Footer_adres1 {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 160%;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
